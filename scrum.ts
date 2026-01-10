@@ -178,6 +178,33 @@ const scrum: ScrumDashboard = {
       status: "draft",
     },
     {
+      id: "PBI-I18N",
+      story: {
+        role: "非日本語ユーザー",
+        capability: "プラグインのUIを自分の言語で表示したい",
+        benefit: "言語の壁なく直感的に操作できるようにするため",
+      },
+      acceptance_criteria: [
+        {
+          criterion: "i18n用の翻訳ファイル構造が存在する",
+          verification: "test -d src/i18n && echo 'exists'",
+        },
+        {
+          criterion: "日本語(ja)と英語(en)の翻訳ファイルがある",
+          verification: "test -f src/i18n/locales/ja.ts && test -f src/i18n/locales/en.ts && echo 'exists'",
+        },
+        {
+          criterion: "Obsidianのロケール設定に基づいて言語が自動選択される",
+          verification: "npm test -- --run -t 'i18n.*locale'",
+        },
+        {
+          criterion: "翻訳キーが型安全に参照できる",
+          verification: "npx tsc -noEmit -skipLibCheck",
+        },
+      ],
+      status: "draft",
+    },
+    {
       id: "PBI-003",
       story: {
         role: "ユーザー",
