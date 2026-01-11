@@ -512,7 +512,38 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 1,
+    pbi_id: "PBI-001",
+    goal: "TDD開発の基盤としてvitest環境を構築する",
+    status: "in_progress",
+    subtasks: [
+      {
+        test: "vitest.config.tsが存在し、正しい設定になっている",
+        implementation: "vitest.config.tsを作成",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "npm testでvitestが実行される",
+        implementation: "package.jsonにvitest依存関係とtestスクリプトを追加",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "サンプルテストが通る",
+        implementation: "src/__tests__/sample.test.tsを作成",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
