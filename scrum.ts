@@ -171,8 +171,10 @@ const scrum: ScrumDashboard = {
         test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
         implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
         type: "behavioral",
-        status: "green",
-        commits: [],
+        status: "completed",
+        commits: [
+          { hash: "ba289d3", message: "test(indent): add removeCommonIndent tests for common leading spaces", phase: "green" },
+        ],
         notes: [
           "エッジケース: 空文字列の場合は空文字列を返す",
           "エッジケース: 1行のみの場合も正しく処理",
@@ -183,10 +185,13 @@ const scrum: ScrumDashboard = {
         test: "共通する先頭タブを削除するテストを書く (AC2: 全行に共通する先頭タブが削除される)",
         implementation: "removeCommonIndent関数でタブを削除する実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
+        status: "completed",
+        commits: [
+          { hash: "pending", message: "test(indent): add tab removal tests", phase: "green" },
+        ],
         notes: [
           "エッジケース: スペースとタブが混在する場合の挙動を明確化",
+          "既存の実装で[ \\t]*正規表現によりタブも処理可能",
         ],
       },
       {
