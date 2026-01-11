@@ -155,15 +155,15 @@ const scrum: ScrumDashboard = {
     number: 8,
     pbi_id: "PBI-011",
     goal: "マークダウンリンク生成機能の実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "Alias入力時に[Alias](path.md)形式のリンクが生成されることをテスト",
         implementation: "generateMarkdownLink関数を実装し、aliasパラメータがある場合は指定されたaliasをリンクテキストとして使用する",
         type: "behavioral",
-        status: "pending",
+        status: "red",
         commits: [],
-        notes: [],
+        notes: ["テストファイル作成: src/__tests__/link.test.ts", "基本的なaliasとパス、特殊文字を含むaliasをテスト"],
       },
       {
         test: "Alias未入力時に[filename](path.md)形式のリンクが生成されることをテスト",
