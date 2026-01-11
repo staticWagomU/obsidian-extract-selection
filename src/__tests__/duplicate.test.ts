@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { getUniqueFilename } from "../duplicate";
+import { generateFilename } from "../filename";
 
 describe("duplicate", () => {
 	describe("no duplication", () => {
@@ -85,9 +86,37 @@ describe("duplicate", () => {
 				expected: "memo-1",
 				description: "memo exists but memo-1 is missing",
 			},
-		])("should append sequential number when $description", ({ baseName, existingFiles, expected }) => {
+		])(
+			"should append sequential number when $description",
+			({ baseName, existingFiles, expected }) => {
+				const result = getUniqueFilename(baseName, existingFiles);
+				expect(result).toBe(expected);
+			},
+		);
+	});
+
+	describe("integration with generateFilename", () => {
+		const testDate = new Date(2024, 0, 15, 14, 30, 45); // 2024-01-15 14:30:45
+
+		it("should generate unique filename when base filename doesn't exist", () => {
+			const baseName = generateFilename(testDate, "yyyy-MM-dd");
+			const existingFiles = ["2024-01-14", "2024-01-16"];
 			const result = getUniqueFilename(baseName, existingFiles);
-			expect(result).toBe(expected);
+			expect(result).toBe("2024-01-15");
+		});
+
+		it("should append -1 when generated filename already exists", () => {
+			const baseName = generateFilename(testDate, "yyyy-MM-dd");
+			const existingFiles = ["2024-01-15", "other-file"];
+			const result = getUniqueFilename(baseName, existingFiles);
+			expect(result).toBe("2024-01-15-1");
+		});
+
+		it("should append sequential number for multiple duplicates", () => {
+			const baseName = generateFilename(testDate, "yyyyMMdd");
+			const existingFiles = ["20240115", "20240115-1", "20240115-2"];
+			const result = getUniqueFilename(baseName, existingFiles);
+			expect(result).toBe("20240115-3");
 		});
 	});
 });
