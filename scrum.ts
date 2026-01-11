@@ -55,16 +55,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-006",
-      story: { role: "ユーザー", capability: "選択範囲の共通インデントを削除したい", benefit: "抽出後のノートが正しいインデントになるようにするため" },
-      acceptance_criteria: [
-        { criterion: "全行に共通する先頭スペースが削除される", verification: "npm test -- --run -t '共通する先頭スペースを削除'" },
-        { criterion: "全行に共通する先頭タブが削除される", verification: "npm test -- --run -t '共通する先頭タブを削除'" },
-        { criterion: "空行は無視して最小インデントが計算される", verification: "npm test -- --run -t '空行を無視して最小インデント計算'" },
-      ],
-      status: "done",
-    },
-    {
       id: "PBI-007",
       story: { role: "ユーザー", capability: "テンプレートフォルダ内のファイル一覧を取得・選択したい", benefit: "使いたいテンプレートを素早く見つけられるようにするため" },
       acceptance_criteria: [
@@ -180,82 +170,7 @@ const scrum: ScrumDashboard = {
     { number: 4, pbi_id: "PBI-003", goal: "設定の保存・読み込み機能実装", status: "done", subtasks: [] },
     { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
     { number: 6, pbi_id: "PBI-005", goal: "ファイル名重複時の連番付与", status: "done", subtasks: [] },
-    {
-      number: 7,
-      pbi_id: "PBI-006",
-      goal: "共通インデント削除機能の実装",
-      status: "done",
-      subtasks: [
-        {
-          test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
-          implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [
-            { hash: "ba289d3", message: "test(indent): add removeCommonIndent tests for common leading spaces", phase: "green" },
-          ],
-          notes: [
-            "エッジケース: 空文字列の場合は空文字列を返す",
-            "エッジケース: 1行のみの場合も正しく処理",
-            "エッジケース: すべての行が空行の場合は元の文字列を返す",
-          ],
-        },
-        {
-          test: "共通する先頭タブを削除するテストを書く (AC2: 全行に共通する先頭タブが削除される)",
-          implementation: "removeCommonIndent関数でタブを削除する実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [
-            { hash: "d65af69", message: "test(indent): add tab removal tests", phase: "green" },
-          ],
-          notes: [
-            "エッジケース: スペースとタブが混在する場合の挙動を明確化",
-            "既存の実装で[ \\t]*正規表現によりタブも処理可能",
-          ],
-        },
-        {
-          test: "空行を無視して最小インデント計算するテストを書く (AC3: 空行は無視して最小インデントが計算される)",
-          implementation: "空行をスキップして最小インデント計算する実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [
-            { hash: "b7f0050", message: "test(indent): add empty line handling tests", phase: "green" },
-          ],
-          notes: [
-            "エッジケース: すべての行が空行の場合",
-            "空行の定義: 長さ0または空白文字のみの行",
-            "既存の実装でtrim().length === 0により空行を無視",
-          ],
-        },
-        {
-          test: "スペースとタブが混在する場合の統合テストを書く",
-          implementation: "混在パターンでも正しく動作する実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [
-            { hash: "a60ffef", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
-          ],
-          notes: [
-            "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
-            "スペースのみ/タブのみ/混在の組み合わせパターンをテスト",
-            "文字数ベースの削除により混在パターンも一貫して処理",
-          ],
-        },
-        {
-          test: "インデントがない場合のテストを書く",
-          implementation: "インデントがない場合は元の文字列を返す実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [
-            { hash: "5a5ebd8", message: "test(indent): add no indent tests", phase: "green" },
-          ],
-          notes: [
-            "エッジケース: すべての行が先頭から文字で始まる場合",
-            "既存の実装でminIndent === 0の場合は早期リターン",
-          ],
-        },
-      ],
-    },
+    { number: 7, pbi_id: "PBI-006", goal: "共通インデント削除機能", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
@@ -268,8 +183,11 @@ const scrum: ScrumDashboard = {
       { action: "AC-実装増分の対応付け明確化", timing: "sprint", status: "completed", outcome: "Sprint 6で適用" },
     ]},
     { sprint: 6, improvements: [
-      { action: "エッジケースの網羅的テスト設計", timing: "sprint", status: "active", outcome: null },
-      { action: "統合テストで組み合わせパターン明示", timing: "sprint", status: "active", outcome: null },
+      { action: "エッジケースの網羅的テスト設計", timing: "sprint", status: "completed", outcome: "Sprint 7で適用成功" },
+      { action: "統合テストで組み合わせパターン明示", timing: "sprint", status: "completed", outcome: "Sprint 7で適用成功" },
+    ]},
+    { sprint: 7, improvements: [
+      { action: "継続的改善の定着確認", timing: "sprint", status: "completed", outcome: "プロセス改善が効果的に機能" },
     ]},
   ],
 };
