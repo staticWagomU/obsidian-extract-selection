@@ -180,7 +180,38 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 5,
+    pbi_id: "PBI-004",
+    goal: "日付フォーマットによるファイル名自動生成機能の実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "yyyyMMddHHmmss形式でファイル名が生成されることをテストする",
+        implementation: "generateFilename関数を実装し、デフォルトのyyyyMMddHHmmss形式でファイル名を生成する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["Parameterized Testパターンを評価: 複数の日時パターンでテストケースを作成"],
+      },
+      {
+        test: "yyyy, MM, dd, HH, mm, ssの各プレースホルダーが正しく動作することをテストする",
+        implementation: "各プレースホルダーの置換ロジックを実装し、正しい桁数・ゼロパディングを適用する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["Parameterized Testパターンを使用して各プレースホルダーを個別にテスト"],
+      },
+      {
+        test: "カスタムフォーマットが適用されることをテストする",
+        implementation: "カスタムフォーマット文字列を受け取り、プレースホルダーを置換してファイル名を生成する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["複数のカスタムフォーマットパターンをParameterized Testで検証"],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
