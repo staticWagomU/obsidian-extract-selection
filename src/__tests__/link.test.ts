@@ -22,4 +22,29 @@ describe("generateMarkdownLink", () => {
 			expect(generateMarkdownLink(targetPath, fromPath, alias)).toBe(expected);
 		});
 	});
+
+	describe("Alias未入力時は[filename](path.md)形式になる (AC2)", () => {
+		test.each([
+			{
+				description: "拡張子なしのファイル名をリンクテキストに使用",
+				targetPath: "folder/my-note.md",
+				fromPath: "current.md",
+				expected: "[my-note](folder/my-note.md)",
+			},
+			{
+				description: "ハイフン区切りのファイル名",
+				targetPath: "folder/important-note.md",
+				fromPath: "current.md",
+				expected: "[important-note](folder/important-note.md)",
+			},
+			{
+				description: "ルートディレクトリのファイル",
+				targetPath: "note.md",
+				fromPath: "current.md",
+				expected: "[note](note.md)",
+			},
+		])("$description", ({ targetPath, fromPath, expected }) => {
+			expect(generateMarkdownLink(targetPath, fromPath)).toBe(expected);
+		});
+	});
 });
