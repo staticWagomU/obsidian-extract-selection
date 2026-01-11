@@ -132,33 +132,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-I18N",
-      story: {
-        role: "非日本語ユーザー",
-        capability: "プラグインのUIを自分の言語で表示したい",
-        benefit: "言語の壁なく直感的に操作できるようにするため",
-      },
-      acceptance_criteria: [
-        {
-          criterion: "i18n用の翻訳ファイル構造が存在する",
-          verification: "test -d src/i18n && echo 'exists'",
-        },
-        {
-          criterion: "日本語(ja)と英語(en)の翻訳ファイルがある",
-          verification: "test -f src/i18n/locales/ja.ts && test -f src/i18n/locales/en.ts && echo 'exists'",
-        },
-        {
-          criterion: "Obsidianのロケール設定に基づいて言語が自動選択される",
-          verification: "npm test -- --run -t 'i18n.*locale'",
-        },
-        {
-          criterion: "翻訳キーが型安全に参照できる",
-          verification: "npx tsc -noEmit -skipLibCheck",
-        },
-      ],
-      status: "ready",
-    },
-    {
       id: "PBI-003",
       story: {
         role: "ユーザー",
@@ -466,38 +439,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 3,
-    pbi_id: "PBI-I18N",
-    goal: "プラグインUIの多言語対応を実現する",
-    status: "in_progress",
-    subtasks: [
-      {
-        test: "src/i18n/ディレクトリが存在する",
-        implementation: "i18n構造を作成",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: [],
-      },
-      {
-        test: "翻訳ファイル(en.ts, ja.ts)が存在する",
-        implementation: "ロケールファイルを作成",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: ["設定画面・モーダル・メッセージの翻訳キーを定義"],
-      },
-      {
-        test: "getLocale関数がObsidianのロケールを検出する",
-        implementation: "ロケール検出とt()関数を実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: ["moment.locale()でObsidianのロケールを取得"],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -512,6 +454,7 @@ const scrum: ScrumDashboard = {
   completed: [
     { number: 1, pbi_id: "PBI-001", goal: "vitest環境構築", status: "done", subtasks: [] },
     { number: 2, pbi_id: "PBI-002", goal: "型定義作成", status: "done", subtasks: [] },
+    { number: 3, pbi_id: "PBI-I18N", goal: "i18n実装", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
@@ -520,10 +463,6 @@ const scrum: ScrumDashboard = {
       improvements: [
         { action: "サンプルコードリネーム", timing: "product", status: "active", outcome: null },
       ],
-    },
-    {
-      sprint: 2,
-      improvements: [],
     },
   ],
 };
