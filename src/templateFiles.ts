@@ -1,5 +1,8 @@
 import { TFolder, TFile, Vault } from "obsidian";
 
+/** Markdown file extension */
+const MARKDOWN_EXTENSION = "md";
+
 /**
  * Get list of template files in the specified folder
  * @param vault - Obsidian Vault instance
@@ -25,7 +28,7 @@ function collectFilesRecursively(folder: TFolder): string[] {
 	const files: string[] = [];
 
 	for (const child of folder.children) {
-		if (child instanceof TFile && child.extension === "md") {
+		if (child instanceof TFile && child.extension === MARKDOWN_EXTENSION) {
 			files.push(child.path);
 		} else if (child instanceof TFolder) {
 			files.push(...collectFilesRecursively(child));
