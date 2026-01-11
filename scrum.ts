@@ -152,7 +152,7 @@ const scrum: ScrumDashboard = {
           verification: "npx tsc -noEmit -skipLibCheck",
         },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-I18N",
