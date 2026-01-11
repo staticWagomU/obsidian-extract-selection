@@ -6,9 +6,9 @@
  * @returns Markdown link string
  */
 export function generateMarkdownLink(targetPath: string, fromPath: string, alias?: string): string {
-	// For now, just use the targetPath as-is (will add relative path calculation later)
 	const linkText = alias || extractFilename(targetPath);
-	return `[${linkText}](${targetPath})`;
+	const relativePath = calculateRelativePath(fromPath, targetPath);
+	return `[${linkText}](${relativePath})`;
 }
 
 /**
