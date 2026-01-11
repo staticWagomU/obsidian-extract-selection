@@ -165,13 +165,13 @@ const scrum: ScrumDashboard = {
     number: 7,
     pbi_id: "PBI-006",
     goal: "共通インデント削除機能の実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
         implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
         type: "behavioral",
-        status: "pending",
+        status: "green",
         commits: [],
         notes: [
           "エッジケース: 空文字列の場合は空文字列を返す",
