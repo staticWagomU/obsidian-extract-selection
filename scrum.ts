@@ -132,29 +132,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-001",
-      story: {
-        role: "開発者",
-        capability: "vitest環境をセットアップしたい",
-        benefit: "TDDで開発できるようにするため",
-      },
-      acceptance_criteria: [
-        {
-          criterion: "npm test でvitestが実行される",
-          verification: "npm test",
-        },
-        {
-          criterion: "サンプルテストが通る",
-          verification: "npm test -- --run",
-        },
-        {
-          criterion: "vitest.config.tsが存在する",
-          verification: "test -f vitest.config.ts && echo 'exists'",
-        },
-      ],
-      status: "done",
-    },
-    {
       id: "PBI-002",
       story: {
         role: "開発者",
@@ -512,38 +489,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 1,
-    pbi_id: "PBI-001",
-    goal: "TDD開発の基盤としてvitest環境を構築する",
-    status: "done",
-    subtasks: [
-      {
-        test: "vitest.config.tsが存在し、正しい設定になっている",
-        implementation: "vitest.config.tsを作成",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: [],
-      },
-      {
-        test: "npm testでvitestが実行される",
-        implementation: "package.jsonにvitest依存関係とtestスクリプトを追加",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: ["@types/nodeを22.12.0に更新（vite 7.x互換性のため）"],
-      },
-      {
-        test: "サンプルテストが通る",
-        implementation: "src/__tests__/sample.test.tsを作成",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: [],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -555,9 +501,29 @@ const scrum: ScrumDashboard = {
     ],
   },
 
-  completed: [],
+  completed: [
+    {
+      number: 1,
+      pbi_id: "PBI-001",
+      goal: "TDD開発の基盤としてvitest環境を構築する",
+      status: "done",
+      subtasks: [],
+    },
+  ],
 
-  retrospectives: [],
+  retrospectives: [
+    {
+      sprint: 1,
+      improvements: [
+        {
+          action: "サンプルコードのリネーム（ESLintルールを一時無効化中）",
+          timing: "product",
+          status: "active",
+          outcome: null,
+        },
+      ],
+    },
+  ],
 };
 
 // JSON output (deno run scrum.ts | jq for queries)
