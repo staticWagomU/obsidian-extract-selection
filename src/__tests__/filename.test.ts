@@ -35,13 +35,10 @@ describe("filename", () => {
 			{ format: "HH", expected: "09", placeholder: "HH" },
 			{ format: "mm", expected: "07", placeholder: "mm" },
 			{ format: "ss", expected: "03", placeholder: "ss" },
-		])(
-			"should correctly replace placeholder $placeholder",
-			({ format, expected }) => {
-				const result = generateFilename(testDate, format);
-				expect(result).toBe(expected);
-			},
-		);
+		])("should correctly replace placeholder $placeholder", ({ format, expected }) => {
+			const result = generateFilename(testDate, format);
+			expect(result).toBe(expected);
+		});
 
 		it.each([
 			{ date: new Date(2024, 0, 1, 0, 0, 0), format: "MM", expected: "01" },
@@ -58,6 +55,49 @@ describe("filename", () => {
 			"should apply zero-padding for $format with value $expected",
 			({ date, format, expected }) => {
 				const result = generateFilename(date, format);
+				expect(result).toBe(expected);
+			},
+		);
+	});
+
+	describe("custom format", () => {
+		const testDate = new Date(2024, 0, 15, 14, 30, 45); // 2024-01-15 14:30:45
+
+		it.each([
+			{
+				format: "yyyy-MM-dd",
+				expected: "2024-01-15",
+				description: "ISO date format",
+			},
+			{
+				format: "yyyy/MM/dd HH:mm:ss",
+				expected: "2024/01/15 14:30:45",
+				description: "datetime with slashes",
+			},
+			{
+				format: "Note_yyyy-MM-dd_HHmmss",
+				expected: "Note_2024-01-15_143045",
+				description: "prefixed with custom text",
+			},
+			{
+				format: "yyyy年MM月dd日",
+				expected: "2024年01月15日",
+				description: "Japanese date format",
+			},
+			{
+				format: "dd-MM-yyyy",
+				expected: "15-01-2024",
+				description: "European date format",
+			},
+			{
+				format: "HH時mm分ss秒",
+				expected: "14時30分45秒",
+				description: "Japanese time format",
+			},
+		])(
+			"should generate filename with $description format",
+			({ format, expected }) => {
+				const result = generateFilename(testDate, format);
 				expect(result).toBe(expected);
 			},
 		);
