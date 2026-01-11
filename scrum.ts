@@ -55,15 +55,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-005",
-      story: { role: "ユーザー", capability: "ファイル名が重複した場合に連番が付与されてほしい", benefit: "同名ファイルで上書きされないようにするため" },
-      acceptance_criteria: [
-        { criterion: "重複時にfilename-1.mdが生成される", verification: "npm test -- --run -t 'duplicate.*-1'" },
-        { criterion: "複数重複時にfilename-2, -3...と連番が増える", verification: "npm test -- --run -t 'duplicate.*sequential'" },
-      ],
-      status: "done",
-    },
-    {
       id: "PBI-006",
       story: { role: "ユーザー", capability: "選択範囲の共通インデントを削除したい", benefit: "抽出後のノートが正しいインデントになるようにするため" },
       acceptance_criteria: [
@@ -188,56 +179,21 @@ const scrum: ScrumDashboard = {
     { number: 3, pbi_id: "PBI-I18N", goal: "i18n実装", status: "done", subtasks: [] },
     { number: 4, pbi_id: "PBI-003", goal: "設定の保存・読み込み機能実装", status: "done", subtasks: [] },
     { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
-    {
-      number: 6,
-      pbi_id: "PBI-005",
-      goal: "ファイル名重複時の連番付与機能の実装",
-      status: "done",
-      subtasks: [
-        {
-          test: "重複ファイル名検出のテストを作成",
-          implementation: "既存ファイル名の存在確認ロジックを実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "8dc6043", message: "test(duplicate): add basic duplicate filename detection", phase: "green" }],
-          notes: ["AC1: 重複時にfilename-1.mdが生成される"],
-        },
-        {
-          test: "初回重複時の連番付与テストを作成(-1が付与される)",
-          implementation: "初回重複時にfilename-1.mdを生成するロジックを実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "696e2d1", message: "feat(duplicate): implement -1 suffix for duplicate filenames", phase: "green" }],
-          notes: ["AC1: 重複時にfilename-1.mdが生成される", "verification: npm test -- --run -t 'duplicate.*-1'"],
-        },
-        {
-          test: "複数回重複時の連番増加テストを作成(-2, -3...)",
-          implementation: "複数回重複時に連番を増やすロジックを実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "3a42cd4", message: "feat(duplicate): implement sequential number increment", phase: "green" }],
-          notes: ["AC2: 複数重複時にfilename-2, -3...と連番が増える", "verification: npm test -- --run -t 'duplicate.*sequential'"],
-        },
-        {
-          test: "ファイル名生成の統合テストを作成",
-          implementation: "既存のgenerateFilename関数と連番ロジックを統合",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "18f9059", message: "test(duplicate): add integration tests with generateFilename", phase: "green" }],
-          notes: ["既存のgenerateFilename関数との統合確認", "既存関数を組み合わせて動作確認"],
-        },
-      ],
-    },
+    { number: 6, pbi_id: "PBI-005", goal: "ファイル名重複時の連番付与", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
     { sprint: 1, improvements: [{ action: "サンプルコードリネーム", timing: "product", status: "active", outcome: null }] },
     { sprint: 4, improvements: [
-      { action: "関連する複数の設定でも個別にコミットすることを検討する", timing: "sprint", status: "active", outcome: null },
-      { action: "Parameterized Testパターンの導入", timing: "sprint", status: "completed", outcome: "Sprint 5で成功裏に適用。test.eachで25テストケースを効率的に記述" },
+      { action: "関連設定の個別コミット", timing: "sprint", status: "active", outcome: null },
+      { action: "Parameterized Testパターン導入", timing: "sprint", status: "completed", outcome: "Sprint 5で適用成功" },
     ]},
     { sprint: 5, improvements: [
-      { action: "受け入れ基準を実装増分に適切に対応させる", timing: "sprint", status: "active", outcome: null },
+      { action: "AC-実装増分の対応付け明確化", timing: "sprint", status: "completed", outcome: "Sprint 6で適用" },
+    ]},
+    { sprint: 6, improvements: [
+      { action: "エッジケースの網羅的テスト設計", timing: "sprint", status: "active", outcome: null },
+      { action: "統合テストで組み合わせパターン明示", timing: "sprint", status: "active", outcome: null },
     ]},
   ],
 };
