@@ -152,7 +152,7 @@ const scrum: ScrumDashboard = {
           verification: "test -f vitest.config.ts && echo 'exists'",
         },
       ],
-      status: "ready",
+      status: "done",
     },
     {
       id: "PBI-002",
@@ -516,7 +516,7 @@ const scrum: ScrumDashboard = {
     number: 1,
     pbi_id: "PBI-001",
     goal: "TDD開発の基盤としてvitest環境を構築する",
-    status: "in_progress",
+    status: "done",
     subtasks: [
       {
         test: "vitest.config.tsが存在し、正しい設定になっている",
