@@ -439,7 +439,54 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 4,
+    pbi_id: "PBI-003",
+    goal: "設定の保存・読み込み機能実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "templateFolder設定が保存・読み込みできることを確認するテストを作成",
+        implementation: "ExtractSelectionSettingsのtemplateFolderフィールドの保存・読み込み処理を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "outputFolder設定が保存・読み込みできることを確認するテストを作成",
+        implementation: "ExtractSelectionSettingsのoutputFolderフィールドの保存・読み込み処理を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "defaultFilenameFormat設定が保存・読み込みできることを確認するテストを作成",
+        implementation: "ExtractSelectionSettingsのdefaultFilenameFormatフィールドの保存・読み込み処理を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "addAliasToFrontmatter設定が保存・読み込みできることを確認するテストを作成",
+        implementation: "ExtractSelectionSettingsのaddAliasToFrontmatterフィールドの保存・読み込み処理を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "removeCommonIndent設定が保存・読み込みできることを確認するテストを作成",
+        implementation: "ExtractSelectionSettingsのremoveCommonIndentフィールドの保存・読み込み処理を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
