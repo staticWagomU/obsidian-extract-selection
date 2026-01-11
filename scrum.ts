@@ -132,29 +132,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-002",
-      story: {
-        role: "開発者",
-        capability: "型定義を作成したい",
-        benefit: "型安全に開発できるようにするため",
-      },
-      acceptance_criteria: [
-        {
-          criterion: "src/types.tsが存在する",
-          verification: "test -f src/types.ts && echo 'exists'",
-        },
-        {
-          criterion: "ExtractSelectionSettingsインターフェースが定義されている",
-          verification: "grep -q 'interface ExtractSelectionSettings' src/types.ts",
-        },
-        {
-          criterion: "型チェックが通る",
-          verification: "npx tsc -noEmit -skipLibCheck",
-        },
-      ],
-      status: "ready",
-    },
-    {
       id: "PBI-I18N",
       story: {
         role: "非日本語ユーザー",
@@ -489,30 +466,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 2,
-    pbi_id: "PBI-002",
-    goal: "型安全な開発のためExtractSelectionSettingsを定義する",
-    status: "in_progress",
-    subtasks: [
-      {
-        test: "src/types.tsが存在する",
-        implementation: "src/types.tsファイルを作成",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: [],
-      },
-      {
-        test: "ExtractSelectionSettingsインターフェースが定義されている",
-        implementation: "仕様書の設定項目に基づいて型を定義",
-        type: "behavioral",
-        status: "completed",
-        commits: [],
-        notes: ["DEFAULT_SETTINGSも定義"],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -525,26 +479,20 @@ const scrum: ScrumDashboard = {
   },
 
   completed: [
-    {
-      number: 1,
-      pbi_id: "PBI-001",
-      goal: "TDD開発の基盤としてvitest環境を構築する",
-      status: "done",
-      subtasks: [],
-    },
+    { number: 1, pbi_id: "PBI-001", goal: "vitest環境構築", status: "done", subtasks: [] },
+    { number: 2, pbi_id: "PBI-002", goal: "型定義作成", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
     {
       sprint: 1,
       improvements: [
-        {
-          action: "サンプルコードのリネーム（ESLintルールを一時無効化中）",
-          timing: "product",
-          status: "active",
-          outcome: null,
-        },
+        { action: "サンプルコードリネーム", timing: "product", status: "active", outcome: null },
       ],
+    },
+    {
+      sprint: 2,
+      improvements: [],
     },
   ],
 };
