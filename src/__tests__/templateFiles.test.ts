@@ -63,4 +63,45 @@ describe("getTemplateFiles", () => {
 			expect(result).not.toContain("Templates/note.txt");
 		});
 	});
+
+	describe("サブフォルダ内のファイルも再帰的に含まれる (AC2)", () => {
+		test("recursive: サブフォルダ内の.mdファイルも含める", () => {
+			// Create subfolder
+			const subFolder: any = Object.create(TFolder.prototype);
+			subFolder.path = "Templates/SubFolder";
+			subFolder.children = [];
+
+			const subFile1: any = Object.create(TFile.prototype);
+			subFile1.path = "Templates/SubFolder/sub1.md";
+			subFile1.extension = "md";
+
+			const subFile2: any = Object.create(TFile.prototype);
+			subFile2.path = "Templates/SubFolder/sub2.md";
+			subFile2.extension = "md";
+
+			subFolder.children.push(subFile1, subFile2);
+
+			// Create root folder
+			const folder: any = Object.create(TFolder.prototype);
+			folder.path = "Templates";
+			folder.children = [];
+
+			const file1: any = Object.create(TFile.prototype);
+			file1.path = "Templates/template1.md";
+			file1.extension = "md";
+
+			folder.children.push(file1, subFolder);
+
+			// Create vault mock
+			const vault: any = Object.create(Vault.prototype);
+			vault.getAbstractFileByPath = vi.fn().mockReturnValue(folder);
+
+			const result = getTemplateFiles(vault, "Templates");
+
+			expect(result).toHaveLength(3);
+			expect(result).toContain("Templates/template1.md");
+			expect(result).toContain("Templates/SubFolder/sub1.md");
+			expect(result).toContain("Templates/SubFolder/sub2.md");
+		});
+	});
 });

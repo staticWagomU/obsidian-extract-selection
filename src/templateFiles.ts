@@ -13,11 +13,22 @@ export function getTemplateFiles(vault: Vault, folderPath: string): string[] {
 		return [];
 	}
 
+	return collectFilesRecursively(folder);
+}
+
+/**
+ * Recursively collect .md files from a folder and its subfolders
+ * @param folder - Folder to search
+ * @returns Array of file paths for .md files
+ */
+function collectFilesRecursively(folder: TFolder): string[] {
 	const files: string[] = [];
 
 	for (const child of folder.children) {
 		if (child instanceof TFile && child.extension === "md") {
 			files.push(child.path);
+		} else if (child instanceof TFolder) {
+			files.push(...collectFilesRecursively(child));
 		}
 	}
 
