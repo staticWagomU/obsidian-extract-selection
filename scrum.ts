@@ -489,7 +489,30 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 2,
+    pbi_id: "PBI-002",
+    goal: "型安全な開発のためExtractSelectionSettingsを定義する",
+    status: "in_progress",
+    subtasks: [
+      {
+        test: "src/types.tsが存在する",
+        implementation: "src/types.tsファイルを作成",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "ExtractSelectionSettingsインターフェースが定義されている",
+        implementation: "仕様書の設定項目に基づいて型を定義",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
