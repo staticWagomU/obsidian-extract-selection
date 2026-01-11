@@ -26,4 +26,33 @@ describe("duplicate", () => {
 			expect(result).not.toBe("existingfile");
 		});
 	});
+
+	describe("duplicate -1 suffix", () => {
+		it.each([
+			{
+				baseName: "document",
+				existingFiles: ["document"],
+				expected: "document-1",
+				description: "single duplicate",
+			},
+			{
+				baseName: "note",
+				existingFiles: ["note", "other"],
+				expected: "note-1",
+				description: "duplicate among other files",
+			},
+			{
+				baseName: "file",
+				existingFiles: ["file", "file-2"],
+				expected: "file-1",
+				description: "duplicate with non-sequential existing suffix",
+			},
+		])(
+			"should append -1 when $description",
+			({ baseName, existingFiles, expected }) => {
+				const result = getUniqueFilename(baseName, existingFiles);
+				expect(result).toBe(expected);
+			},
+		);
+	});
 });

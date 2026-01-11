@@ -9,7 +9,7 @@ export function getUniqueFilename(baseName: string, existingFiles: string[]): st
 	if (!existingFiles.includes(baseName)) {
 		return baseName;
 	}
-	
-	// 重複している場合は一旦空文字を返す（次のステップで実装予定）
-	return "";
+
+	// 重複している場合は-1を付与
+	return `${baseName}-1`;
 }
