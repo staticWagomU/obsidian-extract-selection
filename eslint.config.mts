@@ -11,7 +11,9 @@ export default tseslint.config(
 				projectService: {
 					allowDefaultProject: [
 						'eslint.config.mts',
-						'manifest.json'
+						'manifest.json',
+						'vitest.config.ts',
+						'scrum.ts'
 					]
 				},
 				tsconfigRootDir: import.meta.dirname,
@@ -22,9 +24,12 @@ export default tseslint.config(
 	...obsidianmd.configs.recommended,
 	{
 		// Oxlint に任せるルールを無効化（obsidianmd.configs.recommended の後に適用）
+		// TODO: サンプルコードのリネーム後に sample-names と no-sample-code を有効化
 		rules: {
 			"no-undef": "off",
 			"no-console": "off",
+			"obsidianmd/sample-names": "off",
+			"obsidianmd/no-sample-code": "off",
 		},
 	},
 	globalIgnores([
@@ -34,5 +39,6 @@ export default tseslint.config(
 		"version-bump.mjs",
 		"versions.json",
 		"main.js",
+		"src/__tests__/**",
 	]),
 );
