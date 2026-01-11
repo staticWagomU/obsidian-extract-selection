@@ -99,7 +99,7 @@ const scrum: ScrumDashboard = {
         { criterion: "Alias未入力時は[filename](path.md)形式になる", verification: "npm test -- --run -t 'link.*noAlias'" },
         { criterion: "相対パスが正しく計算される", verification: "npm test -- --run -t 'link.*relative'" },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-012",
