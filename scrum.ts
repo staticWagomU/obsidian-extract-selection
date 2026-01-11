@@ -452,7 +452,7 @@ const scrum: ScrumDashboard = {
         status: "completed",
         commits: [
           {
-            hash: "",
+            hash: "4ad56b9",
             message: "test(settings): add templateFolder setting tests",
             phase: "green",
           },
@@ -466,33 +466,69 @@ const scrum: ScrumDashboard = {
         test: "outputFolder設定が保存・読み込みできることを確認するテストを作成",
         implementation: "ExtractSelectionSettingsのoutputFolderフィールドの保存・読み込み処理を実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
-        notes: [],
+        status: "completed",
+        commits: [
+          {
+            hash: "",
+            message: "test(settings): add all remaining setting tests",
+            phase: "green",
+          },
+        ],
+        notes: [
+          "outputFolderの実装は既にtypes.tsに存在していたため、テストのみ追加",
+          "デフォルト値、カスタム値、シリアライズの3つのテストケースを作成",
+        ],
       },
       {
         test: "defaultFilenameFormat設定が保存・読み込みできることを確認するテストを作成",
         implementation: "ExtractSelectionSettingsのdefaultFilenameFormatフィールドの保存・読み込み処理を実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
-        notes: [],
+        status: "completed",
+        commits: [
+          {
+            hash: "",
+            message: "test(settings): add all remaining setting tests",
+            phase: "green",
+          },
+        ],
+        notes: [
+          "defaultFilenameFormatの実装は既にtypes.tsに存在していたため、テストのみ追加",
+          "デフォルト値、カスタム値、シリアライズの3つのテストケースを作成",
+        ],
       },
       {
         test: "addAliasToFrontmatter設定が保存・読み込みできることを確認するテストを作成",
         implementation: "ExtractSelectionSettingsのaddAliasToFrontmatterフィールドの保存・読み込み処理を実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
-        notes: [],
+        status: "completed",
+        commits: [
+          {
+            hash: "",
+            message: "test(settings): add all remaining setting tests",
+            phase: "green",
+          },
+        ],
+        notes: [
+          "addAliasToFrontmatterの実装は既にtypes.tsに存在していたため、テストのみ追加",
+          "デフォルト値、カスタム値、シリアライズの3つのテストケースを作成",
+        ],
       },
       {
         test: "removeCommonIndent設定が保存・読み込みできることを確認するテストを作成",
         implementation: "ExtractSelectionSettingsのremoveCommonIndentフィールドの保存・読み込み処理を実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
-        notes: [],
+        status: "completed",
+        commits: [
+          {
+            hash: "",
+            message: "test(settings): add all remaining setting tests",
+            phase: "green",
+          },
+        ],
+        notes: [
+          "removeCommonIndentの実装は既にtypes.tsに存在していたため、テストのみ追加",
+          "デフォルト値、カスタム値、シリアライズの3つのテストケースを作成",
+        ],
       },
     ],
   },
