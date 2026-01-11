@@ -161,7 +161,68 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 7,
+    pbi_id: "PBI-006",
+    goal: "共通インデント削除機能の実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
+        implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [
+          "エッジケース: 空文字列の場合は空文字列を返す",
+          "エッジケース: 1行のみの場合も正しく処理",
+          "エッジケース: すべての行が空行の場合は元の文字列を返す",
+        ],
+      },
+      {
+        test: "共通する先頭タブを削除するテストを書く (AC2: 全行に共通する先頭タブが削除される)",
+        implementation: "removeCommonIndent関数でタブを削除する実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [
+          "エッジケース: スペースとタブが混在する場合の挙動を明確化",
+        ],
+      },
+      {
+        test: "空行を無視して最小インデント計算するテストを書く (AC3: 空行は無視して最小インデントが計算される)",
+        implementation: "空行をスキップして最小インデント計算する実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [
+          "エッジケース: すべての行が空行の場合",
+          "空行の定義: 長さ0または空白文字のみの行",
+        ],
+      },
+      {
+        test: "スペースとタブが混在する場合の統合テストを書く",
+        implementation: "混在パターンでも正しく動作する実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [
+          "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
+          "スペースのみ/タブのみ/混在の組み合わせパターンをテスト",
+        ],
+      },
+      {
+        test: "インデントがない場合のテストを書く",
+        implementation: "インデントがない場合は元の文字列を返す実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [
+          "エッジケース: すべての行が先頭から文字で始まる場合",
+        ],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
