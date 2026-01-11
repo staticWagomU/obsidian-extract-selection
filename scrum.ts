@@ -151,7 +151,38 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 8,
+    pbi_id: "PBI-011",
+    goal: "マークダウンリンク生成機能の実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "Alias入力時に[Alias](path.md)形式のリンクが生成されることをテスト",
+        implementation: "generateMarkdownLink関数を実装し、aliasパラメータがある場合は指定されたaliasをリンクテキストとして使用する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "Alias未入力時に[filename](path.md)形式のリンクが生成されることをテスト",
+        implementation: "generateMarkdownLink関数で、aliasパラメータがない場合はファイル名(拡張子なし)をリンクテキストとして使用する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "相対パスが正しく計算されることをテスト(同階層、親子階層、兄弟階層など)",
+        implementation: "calculateRelativePath関数を実装し、fromPathとtoPathから正しい相対パスを計算する",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
