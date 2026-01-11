@@ -55,16 +55,6 @@ const scrum: ScrumDashboard = {
 
   product_backlog: [
     {
-      id: "PBI-004",
-      story: { role: "ユーザー", capability: "日付フォーマットに基づいたファイル名を自動生成したい", benefit: "ファイル名を毎回考えなくて済むようにするため" },
-      acceptance_criteria: [
-        { criterion: "yyyyMMddHHmmss形式でファイル名が生成される", verification: "npm test -- --run -t 'filename.*yyyyMMddHHmmss'" },
-        { criterion: "カスタムフォーマットが適用される", verification: "npm test -- --run -t 'filename.*custom'" },
-        { criterion: "yyyy, MM, dd, HH, mm, ssのプレースホルダーが動作する", verification: "npm test -- --run -t 'filename.*placeholder'" },
-      ],
-      status: "done",
-    },
-    {
       id: "PBI-005",
       story: { role: "ユーザー", capability: "ファイル名が重複した場合に連番が付与されてほしい", benefit: "同名ファイルで上書きされないようにするため" },
       acceptance_criteria: [
@@ -197,45 +187,17 @@ const scrum: ScrumDashboard = {
     { number: 2, pbi_id: "PBI-002", goal: "型定義作成", status: "done", subtasks: [] },
     { number: 3, pbi_id: "PBI-I18N", goal: "i18n実装", status: "done", subtasks: [] },
     { number: 4, pbi_id: "PBI-003", goal: "設定の保存・読み込み機能実装", status: "done", subtasks: [] },
-    {
-      number: 5,
-      pbi_id: "PBI-004",
-      goal: "日付フォーマットによるファイル名自動生成機能の実装",
-      status: "done",
-      subtasks: [
-        {
-          test: "yyyyMMddHHmmss形式でファイル名が生成されることをテストする",
-          implementation: "generateFilename関数を実装し、デフォルトのyyyyMMddHHmmss形式でファイル名を生成する",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "955011c", message: "test(filename): add parameterized tests for yyyyMMddHHmmss format", phase: "green" }],
-          notes: ["Parameterized Testパターンを評価: 複数の日時パターンでテストケースを作成", "リファクタリング不要: コードは十分にシンプルで保守性が高い"],
-        },
-        {
-          test: "yyyy, MM, dd, HH, mm, ssの各プレースホルダーが正しく動作することをテストする",
-          implementation: "各プレースホルダーの置換ロジックを実装し、正しい桁数・ゼロパディングを適用する",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "1b6bc1c", message: "test(filename): add comprehensive placeholder validation tests", phase: "green" }],
-          notes: ["Parameterized Testパターンを使用して各プレースホルダーを個別にテスト", "実装はSubtask 1で完了済み、Subtask 2では包括的なテストケースを追加", "リファクタリング不要: 実装は既に完了しており、テストケースも十分"],
-        },
-        {
-          test: "カスタムフォーマットが適用されることをテストする",
-          implementation: "カスタムフォーマット文字列を受け取り、プレースホルダーを置換してファイル名を生成する",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "fc85ac8", message: "test(filename): add custom format pattern tests", phase: "green" }],
-          notes: ["複数のカスタムフォーマットパターンをParameterized Testで検証", "実装はSubtask 1で完了済み、Subtask 3では多様なフォーマットパターンでテスト", "リファクタリング不要: 実装はシンプルかつ完全"],
-        },
-      ],
-    },
+    { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
     { sprint: 1, improvements: [{ action: "サンプルコードリネーム", timing: "product", status: "active", outcome: null }] },
     { sprint: 4, improvements: [
       { action: "関連する複数の設定でも個別にコミットすることを検討する", timing: "sprint", status: "active", outcome: null },
-      { action: "Parameterized Testパターンの導入を次スプリントで評価する", timing: "sprint", status: "completed", outcome: "Sprint 5で成功裏に適用。test.eachを使用して25個のテストケースを効率的に記述。テストの可読性と保守性が大幅に向上。" },
+      { action: "Parameterized Testパターンの導入", timing: "sprint", status: "completed", outcome: "Sprint 5で成功裏に適用。test.eachで25テストケースを効率的に記述" },
+    ]},
+    { sprint: 5, improvements: [
+      { action: "受け入れ基準を実装増分に適切に対応させる", timing: "sprint", status: "active", outcome: null },
     ]},
   ],
 };
