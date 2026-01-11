@@ -443,15 +443,24 @@ const scrum: ScrumDashboard = {
     number: 4,
     pbi_id: "PBI-003",
     goal: "設定の保存・読み込み機能実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "templateFolder設定が保存・読み込みできることを確認するテストを作成",
         implementation: "ExtractSelectionSettingsのtemplateFolderフィールドの保存・読み込み処理を実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
-        notes: [],
+        status: "completed",
+        commits: [
+          {
+            hash: "",
+            message: "test(settings): add templateFolder setting tests",
+            phase: "green",
+          },
+        ],
+        notes: [
+          "templateFolderの実装は既にtypes.tsに存在していたため、テストのみ追加",
+          "デフォルト値、カスタム値、シリアライズの3つのテストケースを作成",
+        ],
       },
       {
         test: "outputFolder設定が保存・読み込みできることを確認するテストを作成",
