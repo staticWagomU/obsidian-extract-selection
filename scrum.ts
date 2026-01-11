@@ -58,9 +58,9 @@ const scrum: ScrumDashboard = {
       id: "PBI-006",
       story: { role: "ユーザー", capability: "選択範囲の共通インデントを削除したい", benefit: "抽出後のノートが正しいインデントになるようにするため" },
       acceptance_criteria: [
-        { criterion: "全行に共通する先頭スペースが削除される", verification: "npm test -- --run -t 'indent.*space'" },
-        { criterion: "全行に共通する先頭タブが削除される", verification: "npm test -- --run -t 'indent.*tab'" },
-        { criterion: "空行は無視して最小インデントが計算される", verification: "npm test -- --run -t 'indent.*empty'" },
+        { criterion: "全行に共通する先頭スペースが削除される", verification: "npm test -- --run -t '共通する先頭スペースを削除'" },
+        { criterion: "全行に共通する先頭タブが削除される", verification: "npm test -- --run -t '共通する先頭タブを削除'" },
+        { criterion: "空行は無視して最小インデントが計算される", verification: "npm test -- --run -t '空行を無視して最小インデント計算'" },
       ],
       status: "done",
     },
