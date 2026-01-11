@@ -184,13 +184,13 @@ const scrum: ScrumDashboard = {
     number: 5,
     pbi_id: "PBI-004",
     goal: "日付フォーマットによるファイル名自動生成機能の実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "yyyyMMddHHmmss形式でファイル名が生成されることをテストする",
         implementation: "generateFilename関数を実装し、デフォルトのyyyyMMddHHmmss形式でファイル名を生成する",
         type: "behavioral",
-        status: "pending",
+        status: "green",
         commits: [],
         notes: ["Parameterized Testパターンを評価: 複数の日時パターンでテストケースを作成"],
       },

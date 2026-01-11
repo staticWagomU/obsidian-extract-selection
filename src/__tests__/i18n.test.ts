@@ -54,9 +54,7 @@ describe("i18n", () => {
 
 		it("should replace placeholders with params", () => {
 			vi.mocked(moment.locale).mockReturnValue("en");
-			expect(t("msgNoteCreated", { filename: "test.md" })).toBe(
-				"Note created: test.md",
-			);
+			expect(t("msgNoteCreated", { filename: "test.md" })).toBe("Note created: test.md");
 		});
 
 		it("should replace placeholders in Japanese", () => {

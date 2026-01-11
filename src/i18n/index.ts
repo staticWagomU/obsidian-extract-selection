@@ -26,10 +26,7 @@ export function getLocale(): string {
  * t("msgNoteCreated", { filename: "note.md" })
  * // => "Note created: note.md"
  */
-export function t(
-	key: TranslationKeys,
-	params?: Record<string, string>,
-): string {
+export function t(key: TranslationKeys, params?: Record<string, string>): string {
 	const locale = getLocale();
 	const translations = locales[locale] ?? locales.en!;
 	let text = translations[key] ?? en[key];
