@@ -466,7 +466,38 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 3,
+    pbi_id: "PBI-I18N",
+    goal: "プラグインUIの多言語対応を実現する",
+    status: "in_progress",
+    subtasks: [
+      {
+        test: "src/i18n/ディレクトリが存在する",
+        implementation: "i18n構造を作成",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "翻訳ファイル(en.ts, ja.ts)が存在する",
+        implementation: "ロケールファイルを作成",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+      {
+        test: "getLocale関数がObsidianのロケールを検出する",
+        implementation: "ロケール検出とt()関数を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: [],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
