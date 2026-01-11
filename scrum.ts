@@ -166,46 +166,7 @@ const scrum: ScrumDashboard = {
     { number: 6, pbi_id: "PBI-005", goal: "ファイル名重複時の連番付与", status: "done", subtasks: [] },
     { number: 7, pbi_id: "PBI-006", goal: "共通インデント削除機能", status: "done", subtasks: [] },
     { number: 8, pbi_id: "PBI-011", goal: "マークダウンリンク生成機能", status: "done", subtasks: [] },
-    {
-      number: 9,
-      pbi_id: "PBI-007",
-      goal: "テンプレートフォルダ内のファイル一覧取得機能の実装",
-      status: "done",
-      subtasks: [
-        {
-          test: "指定フォルダ内の.mdファイル一覧が取得できることをテストする",
-          implementation: "getTemplateFiles関数で基本的なファイル一覧取得を実装",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "d36fd6e", message: "feat(template): add basic template file listing (AC1)", phase: "green" }],
-          notes: ["AC1: 指定フォルダ内の.mdファイル一覧が取得できる"],
-        },
-        {
-          test: "サブフォルダ内のファイルも再帰的に含まれることをテストする",
-          implementation: "getTemplateFiles関数に再帰的なファイル探索機能を追加",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "864d47e", message: "feat(template): add recursive file search (AC2)", phase: "green" }],
-          notes: ["AC2: サブフォルダ内のファイルも再帰的に含まれる"],
-        },
-        {
-          test: "空のフォルダまたは存在しないフォルダの場合、空配列を返すことをテストする",
-          implementation: "getTemplateFiles関数にエッジケース処理を追加",
-          type: "behavioral",
-          status: "completed",
-          commits: [{ hash: "9e70e18", message: "test(template): add edge case tests (AC3)", phase: "green" }],
-          notes: ["AC3: 空のフォルダまたは存在しないフォルダの場合、空配列を返す"],
-        },
-        {
-          test: "既存のテストケースで回帰がないことを確認",
-          implementation: "コードの構造改善とパフォーマンス最適化",
-          type: "structural",
-          status: "completed",
-          commits: [{ hash: "89be77c", message: "refactor(template): extract markdown extension constant", phase: "refactoring" }],
-          notes: ["リファクタリング: コードの可読性とメンテナンス性の向上"],
-        },
-      ],
-    },
+    { number: 9, pbi_id: "PBI-007", goal: "テンプレートファイル一覧取得", status: "done", subtasks: [] },
   ],
 
   retrospectives: [
@@ -225,8 +186,12 @@ const scrum: ScrumDashboard = {
       { action: "継続的改善の定着確認", timing: "sprint", status: "completed", outcome: "プロセス改善が効果的に機能" },
     ]},
     { sprint: 8, improvements: [
-      { action: "関数統合を見据えた初期設計", timing: "sprint", status: "active", outcome: null },
-      { action: "テストケースの段階的増分追加", timing: "sprint", status: "active", outcome: null },
+      { action: "関数統合を見据えた初期設計", timing: "sprint", status: "completed", outcome: "Sprint 9で適用成功" },
+      { action: "テストケースの段階的増分追加", timing: "sprint", status: "completed", outcome: "Sprint 9で適用成功" },
+    ]},
+    { sprint: 9, improvements: [
+      { action: "定数化パターンの継続的適用", timing: "sprint", status: "active", outcome: null },
+      { action: "AC毎のサブタスク分解の標準化", timing: "sprint", status: "active", outcome: null },
     ]},
   ],
 };
