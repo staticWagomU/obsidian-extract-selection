@@ -174,13 +174,13 @@ const scrum: ScrumDashboard = {
     number: 6,
     pbi_id: "PBI-005",
     goal: "ファイル名重複時の連番付与機能の実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "重複ファイル名検出のテストを作成",
         implementation: "既存ファイル名の存在確認ロジックを実装",
         type: "behavioral",
-        status: "pending",
+        status: "green",
         commits: [],
         notes: ["AC1: 重複時にfilename-1.mdが生成される"],
       },
