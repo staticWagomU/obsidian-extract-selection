@@ -99,7 +99,7 @@ const scrum: ScrumDashboard = {
         { criterion: "Alias未入力時は[filename](path.md)形式になる", verification: "npm test -- --run -t 'link.*noAlias'" },
         { criterion: "相対パスが正しく計算される", verification: "npm test -- --run -t 'link.*relative'" },
       ],
-      status: "ready",
+      status: "done",
     },
     {
       id: "PBI-012",
@@ -151,38 +151,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 8,
-    pbi_id: "PBI-011",
-    goal: "マークダウンリンク生成機能の実装",
-    status: "in_progress",
-    subtasks: [
-      {
-        test: "Alias入力時に[Alias](path.md)形式のリンクが生成されることをテスト",
-        implementation: "generateMarkdownLink関数を実装し、aliasパラメータがある場合は指定されたaliasをリンクテキストとして使用する",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "243eedd", message: "test(link): add alias link generation test and implementation", phase: "green" }],
-        notes: ["テストファイル作成: src/__tests__/link.test.ts", "基本的なaliasとパス、特殊文字を含むaliasをテスト"],
-      },
-      {
-        test: "Alias未入力時に[filename](path.md)形式のリンクが生成されることをテスト",
-        implementation: "generateMarkdownLink関数で、aliasパラメータがない場合はファイル名(拡張子なし)をリンクテキストとして使用する",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "7e496a1", message: "test(link): add no-alias link generation test and implementation", phase: "green" }],
-        notes: ["ファイル名からリンクテキストを抽出する3つのテストケースを追加", "extractFilename関数で拡張子なしのファイル名を抽出"],
-      },
-      {
-        test: "相対パスが正しく計算されることをテスト(同階層、親子階層、兄弟階層など)",
-        implementation: "calculateRelativePath関数を実装し、fromPathとtoPathから正しい相対パスを計算する",
-        type: "behavioral",
-        status: "red",
-        commits: [],
-        notes: ["7つのテストケースを追加：同階層、サブディレクトリ、親、兄弟、深い階層、2階層上、異なる深さの兄弟"],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -202,6 +171,41 @@ const scrum: ScrumDashboard = {
     { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
     { number: 6, pbi_id: "PBI-005", goal: "ファイル名重複時の連番付与", status: "done", subtasks: [] },
     { number: 7, pbi_id: "PBI-006", goal: "共通インデント削除機能", status: "done", subtasks: [] },
+    {
+      number: 8,
+      pbi_id: "PBI-011",
+      goal: "マークダウンリンク生成機能の実装",
+      status: "done",
+      subtasks: [
+        {
+          test: "Alias入力時に[Alias](path.md)形式のリンクが生成されることをテスト",
+          implementation: "generateMarkdownLink関数を実装し、aliasパラメータがある場合は指定されたaliasをリンクテキストとして使用する",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "243eedd", message: "test(link): add alias link generation test and implementation", phase: "green" }],
+          notes: ["テストファイル作成: src/__tests__/link.test.ts", "基本的なaliasとパス、特殊文字を含むaliasをテスト"],
+        },
+        {
+          test: "Alias未入力時に[filename](path.md)形式のリンクが生成されることをテスト",
+          implementation: "generateMarkdownLink関数で、aliasパラメータがない場合はファイル名(拡張子なし)をリンクテキストとして使用する",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "7e496a1", message: "test(link): add no-alias link generation test and implementation", phase: "green" }],
+          notes: ["ファイル名からリンクテキストを抽出する3つのテストケースを追加", "extractFilename関数で拡張子なしのファイル名を抽出"],
+        },
+        {
+          test: "相対パスが正しく計算されることをテスト(同階層、親子階層、兄弟階層など)",
+          implementation: "calculateRelativePath関数を実装し、fromPathとtoPathから正しい相対パスを計算する",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "d8b4a79", message: "test(link): add relative path calculation test and implementation", phase: "green" },
+            { hash: "b904f80", message: "refactor(link): integrate calculateRelativePath into generateMarkdownLink", phase: "refactoring" },
+          ],
+          notes: ["7つのテストケースを追加：同階層、サブディレクトリ、親、兄弟、深い階層、2階層上、異なる深さの兄弟", "共通の祖先を見つけて相対パスを計算するアルゴリズムを実装", "generateMarkdownLink関数に統合してすべてのACで相対パスを使用"],
+        },
+      ],
+    },
   ],
 
   retrospectives: [
