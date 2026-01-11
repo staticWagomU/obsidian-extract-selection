@@ -170,7 +170,46 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 6,
+    pbi_id: "PBI-005",
+    goal: "ファイル名重複時の連番付与機能の実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "重複ファイル名検出のテストを作成",
+        implementation: "既存ファイル名の存在確認ロジックを実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC1: 重複時にfilename-1.mdが生成される"],
+      },
+      {
+        test: "初回重複時の連番付与テストを作成(-1が付与される)",
+        implementation: "初回重複時にfilename-1.mdを生成するロジックを実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC1: 重複時にfilename-1.mdが生成される", "verification: npm test -- --run -t 'duplicate.*-1'"],
+      },
+      {
+        test: "複数回重複時の連番増加テストを作成(-2, -3...)",
+        implementation: "複数回重複時に連番を増やすロジックを実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC2: 複数重複時にfilename-2, -3...と連番が増える", "verification: npm test -- --run -t 'duplicate.*sequential'"],
+      },
+      {
+        test: "ファイル名生成の統合テストを作成",
+        implementation: "既存のgenerateFilename関数と連番ロジックを統合",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["既存のgenerateFilename関数との統合確認"],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
