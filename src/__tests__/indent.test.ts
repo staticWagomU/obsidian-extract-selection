@@ -68,6 +68,28 @@ describe("removeCommonIndent", () => {
 		});
 	});
 
+	describe("スペースとタブが混在する場合の統合テスト", () => {
+		test.each([
+			{
+				description: "すべての行にスペースとタブの同じ混在インデント",
+				input: " \tline1\n \tline2\n \tline3",
+				expected: "line1\nline2\nline3",
+			},
+			{
+				description: "スペース2つとスペース1つ+タブ（最小は2文字、文字数ベース）",
+				input: "  line1\n \tline2",
+				expected: "line1\nline2",
+			},
+			{
+				description: "タブ+スペース2つとスペース3つ（最小は3文字、文字数ベース）",
+				input: "\t  line1\n   line2",
+				expected: "line1\nline2",
+			},
+		])("$description", ({ input, expected }) => {
+			expect(removeCommonIndent(input)).toBe(expected);
+		});
+	});
+
 	describe("エッジケース", () => {
 		test.each([
 			{

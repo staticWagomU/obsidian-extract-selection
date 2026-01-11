@@ -200,7 +200,7 @@ const scrum: ScrumDashboard = {
         type: "behavioral",
         status: "completed",
         commits: [
-          { hash: "pending", message: "test(indent): add empty line handling tests", phase: "green" },
+          { hash: "b7f0050", message: "test(indent): add empty line handling tests", phase: "green" },
         ],
         notes: [
           "エッジケース: すべての行が空行の場合",
@@ -212,11 +212,14 @@ const scrum: ScrumDashboard = {
         test: "スペースとタブが混在する場合の統合テストを書く",
         implementation: "混在パターンでも正しく動作する実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
+        status: "completed",
+        commits: [
+          { hash: "pending", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
+        ],
         notes: [
           "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
           "スペースのみ/タブのみ/混在の組み合わせパターンをテスト",
+          "文字数ベースの削除により混在パターンも一貫して処理",
         ],
       },
       {
