@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { generateMarkdownLink } from "../link";
+import { calculateRelativePath, generateMarkdownLink } from "../link";
 
 describe("generateMarkdownLink", () => {
 	describe("Alias入力時は[Alias](path.md)形式になる (AC1)", () => {
@@ -45,6 +45,57 @@ describe("generateMarkdownLink", () => {
 			},
 		])("$description", ({ targetPath, fromPath, expected }) => {
 			expect(generateMarkdownLink(targetPath, fromPath)).toBe(expected);
+		});
+	});
+});
+
+describe("calculateRelativePath", () => {
+	describe("相対パスが正しく計算される (AC3)", () => {
+		test.each([
+			{
+				description: "同じディレクトリ内のファイル",
+				fromPath: "folder/current.md",
+				toPath: "folder/target.md",
+				expected: "target.md",
+			},
+			{
+				description: "サブディレクトリ内のファイル",
+				fromPath: "current.md",
+				toPath: "subfolder/target.md",
+				expected: "subfolder/target.md",
+			},
+			{
+				description: "親ディレクトリのファイル",
+				fromPath: "folder/current.md",
+				toPath: "target.md",
+				expected: "../target.md",
+			},
+			{
+				description: "兄弟ディレクトリのファイル",
+				fromPath: "folder1/current.md",
+				toPath: "folder2/target.md",
+				expected: "../folder2/target.md",
+			},
+			{
+				description: "深い階層のサブディレクトリ",
+				fromPath: "current.md",
+				toPath: "folder1/folder2/target.md",
+				expected: "folder1/folder2/target.md",
+			},
+			{
+				description: "2階層上のファイル",
+				fromPath: "folder1/folder2/current.md",
+				toPath: "target.md",
+				expected: "../../target.md",
+			},
+			{
+				description: "異なる深さの兄弟ディレクトリ",
+				fromPath: "folder1/folder2/current.md",
+				toPath: "folder3/target.md",
+				expected: "../../folder3/target.md",
+			},
+		])("$description", ({ fromPath, toPath, expected }) => {
+			expect(calculateRelativePath(fromPath, toPath)).toBe(expected);
 		});
 	});
 });

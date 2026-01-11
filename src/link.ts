@@ -20,3 +20,37 @@ function extractFilename(path: string): string {
 	const filename = path.split("/").pop() || "";
 	return filename.replace(/\.md$/, "");
 }
+
+/**
+ * Calculate relative path from one file to another
+ * @param fromPath - The path from which the link is created
+ * @param toPath - The path to the target file
+ * @returns Relative path from fromPath to toPath
+ */
+export function calculateRelativePath(fromPath: string, toPath: string): string {
+	const fromParts = fromPath.split("/");
+	const toParts = toPath.split("/");
+
+	// Remove the filename from fromPath (we only need the directory)
+	fromParts.pop();
+
+	// Find the common ancestor
+	let commonLength = 0;
+	const minLength = Math.min(fromParts.length, toParts.length);
+	for (let i = 0; i < minLength; i++) {
+		if (fromParts[i] === toParts[i]) {
+			commonLength++;
+		} else {
+			break;
+		}
+	}
+
+	// Build the relative path
+	const upLevels = fromParts.length - commonLength;
+	const remainingPath = toParts.slice(commonLength);
+
+	const upPart = "../".repeat(upLevels);
+	const downPart = remainingPath.join("/");
+
+	return upPart + downPart;
+}
