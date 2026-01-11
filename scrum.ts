@@ -61,7 +61,7 @@ const scrum: ScrumDashboard = {
         { criterion: "重複時にfilename-1.mdが生成される", verification: "npm test -- --run -t 'duplicate.*-1'" },
         { criterion: "複数重複時にfilename-2, -3...と連番が増える", verification: "npm test -- --run -t 'duplicate.*sequential'" },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-006",
