@@ -160,7 +160,7 @@ const scrum: ScrumDashboard = {
           verification: "npm test -- --run -t 'removeCommonIndent'",
         },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-004",
