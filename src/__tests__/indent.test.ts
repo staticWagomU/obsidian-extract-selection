@@ -46,6 +46,28 @@ describe("removeCommonIndent", () => {
 		});
 	});
 
+	describe("空行を無視して最小インデント計算 (AC3)", () => {
+		test.each([
+			{
+				description: "空行を含む場合（空行は無視）",
+				input: "  line1\n\n  line2",
+				expected: "line1\n\nline2",
+			},
+			{
+				description: "空白文字のみの行を含む場合",
+				input: "  line1\n   \n  line2",
+				expected: "line1\n   \nline2",
+			},
+			{
+				description: "先頭と末尾に空行",
+				input: "\n  line1\n  line2\n",
+				expected: "\nline1\nline2\n",
+			},
+		])("$description", ({ input, expected }) => {
+			expect(removeCommonIndent(input)).toBe(expected);
+		});
+	});
+
 	describe("エッジケース", () => {
 		test.each([
 			{

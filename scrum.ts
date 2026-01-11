@@ -187,7 +187,7 @@ const scrum: ScrumDashboard = {
         type: "behavioral",
         status: "completed",
         commits: [
-          { hash: "pending", message: "test(indent): add tab removal tests", phase: "green" },
+          { hash: "d65af69", message: "test(indent): add tab removal tests", phase: "green" },
         ],
         notes: [
           "エッジケース: スペースとタブが混在する場合の挙動を明確化",
@@ -198,11 +198,14 @@ const scrum: ScrumDashboard = {
         test: "空行を無視して最小インデント計算するテストを書く (AC3: 空行は無視して最小インデントが計算される)",
         implementation: "空行をスキップして最小インデント計算する実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
+        status: "completed",
+        commits: [
+          { hash: "pending", message: "test(indent): add empty line handling tests", phase: "green" },
+        ],
         notes: [
           "エッジケース: すべての行が空行の場合",
           "空行の定義: 長さ0または空白文字のみの行",
+          "既存の実装でtrim().length === 0により空行を無視",
         ],
       },
       {
