@@ -10,6 +10,14 @@ export function getUniqueFilename(baseName: string, existingFiles: string[]): st
 		return baseName;
 	}
 
-	// 重複している場合は-1を付与
-	return `${baseName}-1`;
+	// 重複している場合は最小の未使用番号を見つける
+	let counter = 1;
+	let candidateName = `${baseName}-${counter}`;
+
+	while (existingFiles.includes(candidateName)) {
+		counter++;
+		candidateName = `${baseName}-${counter}`;
+	}
+
+	return candidateName;
 }

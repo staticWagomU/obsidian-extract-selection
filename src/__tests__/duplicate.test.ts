@@ -47,12 +47,47 @@ describe("duplicate", () => {
 				expected: "file-1",
 				description: "duplicate with non-sequential existing suffix",
 			},
-		])(
-			"should append -1 when $description",
-			({ baseName, existingFiles, expected }) => {
-				const result = getUniqueFilename(baseName, existingFiles);
-				expect(result).toBe(expected);
+		])("should append -1 when $description", ({ baseName, existingFiles, expected }) => {
+			const result = getUniqueFilename(baseName, existingFiles);
+			expect(result).toBe(expected);
+		});
+	});
+
+	describe("duplicate sequential suffix", () => {
+		it.each([
+			{
+				baseName: "document",
+				existingFiles: ["document", "document-1"],
+				expected: "document-2",
+				description: "document and document-1 exist",
 			},
-		);
+			{
+				baseName: "note",
+				existingFiles: ["note", "note-1", "note-2"],
+				expected: "note-3",
+				description: "note, note-1, and note-2 exist",
+			},
+			{
+				baseName: "file",
+				existingFiles: ["file", "file-1", "file-2", "file-3", "file-4"],
+				expected: "file-5",
+				description: "file through file-4 exist",
+			},
+			{
+				baseName: "task",
+				existingFiles: ["task", "task-1", "task-3"],
+				expected: "task-2",
+				description: "task and task-1 exist with gap at task-2",
+			},
+			{
+				baseName: "memo",
+				existingFiles: ["memo", "memo-2", "memo-3"],
+				expected: "memo-1",
+				description: "memo exists but memo-1 is missing",
+			},
+		])("should append sequential number when $description", ({ baseName, existingFiles, expected }) => {
+			const result = getUniqueFilename(baseName, existingFiles);
+			expect(result).toBe(expected);
+		});
 	});
 });
