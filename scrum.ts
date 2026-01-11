@@ -62,7 +62,7 @@ const scrum: ScrumDashboard = {
         { criterion: "全行に共通する先頭タブが削除される", verification: "npm test -- --run -t 'indent.*tab'" },
         { criterion: "空行は無視して最小インデントが計算される", verification: "npm test -- --run -t 'indent.*empty'" },
       ],
-      status: "ready",
+      status: "done",
     },
     {
       id: "PBI-007",
@@ -161,82 +161,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 7,
-    pbi_id: "PBI-006",
-    goal: "共通インデント削除機能の実装",
-    status: "in_progress",
-    subtasks: [
-      {
-        test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
-        implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [
-          { hash: "ba289d3", message: "test(indent): add removeCommonIndent tests for common leading spaces", phase: "green" },
-        ],
-        notes: [
-          "エッジケース: 空文字列の場合は空文字列を返す",
-          "エッジケース: 1行のみの場合も正しく処理",
-          "エッジケース: すべての行が空行の場合は元の文字列を返す",
-        ],
-      },
-      {
-        test: "共通する先頭タブを削除するテストを書く (AC2: 全行に共通する先頭タブが削除される)",
-        implementation: "removeCommonIndent関数でタブを削除する実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [
-          { hash: "d65af69", message: "test(indent): add tab removal tests", phase: "green" },
-        ],
-        notes: [
-          "エッジケース: スペースとタブが混在する場合の挙動を明確化",
-          "既存の実装で[ \\t]*正規表現によりタブも処理可能",
-        ],
-      },
-      {
-        test: "空行を無視して最小インデント計算するテストを書く (AC3: 空行は無視して最小インデントが計算される)",
-        implementation: "空行をスキップして最小インデント計算する実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [
-          { hash: "b7f0050", message: "test(indent): add empty line handling tests", phase: "green" },
-        ],
-        notes: [
-          "エッジケース: すべての行が空行の場合",
-          "空行の定義: 長さ0または空白文字のみの行",
-          "既存の実装でtrim().length === 0により空行を無視",
-        ],
-      },
-      {
-        test: "スペースとタブが混在する場合の統合テストを書く",
-        implementation: "混在パターンでも正しく動作する実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [
-          { hash: "a60ffef", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
-        ],
-        notes: [
-          "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
-          "スペースのみ/タブのみ/混在の組み合わせパターンをテスト",
-          "文字数ベースの削除により混在パターンも一貫して処理",
-        ],
-      },
-      {
-        test: "インデントがない場合のテストを書く",
-        implementation: "インデントがない場合は元の文字列を返す実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [
-          { hash: "pending", message: "test(indent): add no indent tests", phase: "green" },
-        ],
-        notes: [
-          "エッジケース: すべての行が先頭から文字で始まる場合",
-          "既存の実装でminIndent === 0の場合は早期リターン",
-        ],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -255,6 +180,82 @@ const scrum: ScrumDashboard = {
     { number: 4, pbi_id: "PBI-003", goal: "設定の保存・読み込み機能実装", status: "done", subtasks: [] },
     { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
     { number: 6, pbi_id: "PBI-005", goal: "ファイル名重複時の連番付与", status: "done", subtasks: [] },
+    {
+      number: 7,
+      pbi_id: "PBI-006",
+      goal: "共通インデント削除機能の実装",
+      status: "done",
+      subtasks: [
+        {
+          test: "共通する先頭スペースを削除するテストを書く (AC1: 全行に共通する先頭スペースが削除される)",
+          implementation: "removeCommonIndent関数で先頭スペースを削除する実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "ba289d3", message: "test(indent): add removeCommonIndent tests for common leading spaces", phase: "green" },
+          ],
+          notes: [
+            "エッジケース: 空文字列の場合は空文字列を返す",
+            "エッジケース: 1行のみの場合も正しく処理",
+            "エッジケース: すべての行が空行の場合は元の文字列を返す",
+          ],
+        },
+        {
+          test: "共通する先頭タブを削除するテストを書く (AC2: 全行に共通する先頭タブが削除される)",
+          implementation: "removeCommonIndent関数でタブを削除する実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "d65af69", message: "test(indent): add tab removal tests", phase: "green" },
+          ],
+          notes: [
+            "エッジケース: スペースとタブが混在する場合の挙動を明確化",
+            "既存の実装で[ \\t]*正規表現によりタブも処理可能",
+          ],
+        },
+        {
+          test: "空行を無視して最小インデント計算するテストを書く (AC3: 空行は無視して最小インデントが計算される)",
+          implementation: "空行をスキップして最小インデント計算する実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "b7f0050", message: "test(indent): add empty line handling tests", phase: "green" },
+          ],
+          notes: [
+            "エッジケース: すべての行が空行の場合",
+            "空行の定義: 長さ0または空白文字のみの行",
+            "既存の実装でtrim().length === 0により空行を無視",
+          ],
+        },
+        {
+          test: "スペースとタブが混在する場合の統合テストを書く",
+          implementation: "混在パターンでも正しく動作する実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "a60ffef", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
+          ],
+          notes: [
+            "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
+            "スペースのみ/タブのみ/混在の組み合わせパターンをテスト",
+            "文字数ベースの削除により混在パターンも一貫して処理",
+          ],
+        },
+        {
+          test: "インデントがない場合のテストを書く",
+          implementation: "インデントがない場合は元の文字列を返す実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [
+            { hash: "5a5ebd8", message: "test(indent): add no indent tests", phase: "green" },
+          ],
+          notes: [
+            "エッジケース: すべての行が先頭から文字で始まる場合",
+            "既存の実装でminIndent === 0の場合は早期リターン",
+          ],
+        },
+      ],
+    },
   ],
 
   retrospectives: [
