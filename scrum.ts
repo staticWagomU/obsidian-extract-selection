@@ -224,6 +224,9 @@ const scrum: ScrumDashboard = {
     { sprint: 7, improvements: [
       { action: "継続的改善の定着確認", timing: "sprint", status: "completed", outcome: "プロセス改善が効果的に機能" },
     ]},
+    { sprint: 8, improvements: [
+      { action: "相対パス計算とリンク生成の統合", timing: "sprint", status: "completed", outcome: "Sprint 8で実装完了、すべてのAC検証成功" },
+    ]},
   ],
 };
 
