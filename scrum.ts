@@ -62,7 +62,7 @@ const scrum: ScrumDashboard = {
         { criterion: "全行に共通する先頭タブが削除される", verification: "npm test -- --run -t 'indent.*tab'" },
         { criterion: "空行は無視して最小インデントが計算される", verification: "npm test -- --run -t 'indent.*empty'" },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-007",
