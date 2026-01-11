@@ -145,7 +145,46 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: null,
+  sprint: {
+    number: 9,
+    pbi_id: "PBI-007",
+    goal: "テンプレートフォルダ内のファイル一覧取得機能の実装",
+    status: "planning",
+    subtasks: [
+      {
+        test: "指定フォルダ内の.mdファイル一覧が取得できることをテストする",
+        implementation: "getTemplateFiles関数で基本的なファイル一覧取得を実装",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC1: 指定フォルダ内の.mdファイル一覧が取得できる"],
+      },
+      {
+        test: "サブフォルダ内のファイルも再帰的に含まれることをテストする",
+        implementation: "getTemplateFiles関数に再帰的なファイル探索機能を追加",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC2: サブフォルダ内のファイルも再帰的に含まれる"],
+      },
+      {
+        test: "空のフォルダまたは存在しないフォルダの場合、空配列を返すことをテストする",
+        implementation: "getTemplateFiles関数にエッジケース処理を追加",
+        type: "behavioral",
+        status: "pending",
+        commits: [],
+        notes: ["AC3: 空のフォルダまたは存在しないフォルダの場合、空配列を返す"],
+      },
+      {
+        test: "既存のテストケースで回帰がないことを確認",
+        implementation: "コードの構造改善とパフォーマンス最適化",
+        type: "structural",
+        status: "pending",
+        commits: [],
+        notes: ["リファクタリング: コードの可読性とメンテナンス性の向上"],
+      },
+    ],
+  },
 
   definition_of_done: {
     checks: [
