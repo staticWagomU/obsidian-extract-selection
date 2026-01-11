@@ -214,7 +214,7 @@ const scrum: ScrumDashboard = {
         type: "behavioral",
         status: "completed",
         commits: [
-          { hash: "pending", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
+          { hash: "a60ffef", message: "test(indent): add mixed space/tab integration tests", phase: "green" },
         ],
         notes: [
           "Sprint 6の改善: エッジケースの網羅的テスト設計を適用",
@@ -226,10 +226,13 @@ const scrum: ScrumDashboard = {
         test: "インデントがない場合のテストを書く",
         implementation: "インデントがない場合は元の文字列を返す実装",
         type: "behavioral",
-        status: "pending",
-        commits: [],
+        status: "completed",
+        commits: [
+          { hash: "pending", message: "test(indent): add no indent tests", phase: "green" },
+        ],
         notes: [
           "エッジケース: すべての行が先頭から文字で始まる場合",
+          "既存の実装でminIndent === 0の場合は早期リターン",
         ],
       },
     ],

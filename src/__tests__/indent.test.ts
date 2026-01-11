@@ -90,6 +90,28 @@ describe("removeCommonIndent", () => {
 		});
 	});
 
+	describe("インデントがない場合", () => {
+		test.each([
+			{
+				description: "すべての行が先頭から文字で始まる",
+				input: "line1\nline2\nline3",
+				expected: "line1\nline2\nline3",
+			},
+			{
+				description: "一部の行のみインデントあり（最小は0）",
+				input: "line1\n  line2\nline3",
+				expected: "line1\n  line2\nline3",
+			},
+			{
+				description: "1行のみでインデントなし",
+				input: "single line",
+				expected: "single line",
+			},
+		])("$description", ({ input, expected }) => {
+			expect(removeCommonIndent(input)).toBe(expected);
+		});
+	});
+
 	describe("エッジケース", () => {
 		test.each([
 			{
