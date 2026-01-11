@@ -62,7 +62,7 @@ const scrum: ScrumDashboard = {
         { criterion: "カスタムフォーマットが適用される", verification: "npm test -- --run -t 'filename.*custom'" },
         { criterion: "yyyy, MM, dd, HH, mm, ssのプレースホルダーが動作する", verification: "npm test -- --run -t 'filename.*placeholder'" },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-005",
