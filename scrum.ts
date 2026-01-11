@@ -61,7 +61,7 @@ const scrum: ScrumDashboard = {
         { criterion: "重複時にfilename-1.mdが生成される", verification: "npm test -- --run -t 'duplicate.*-1'" },
         { criterion: "複数重複時にfilename-2, -3...と連番が増える", verification: "npm test -- --run -t 'duplicate.*sequential'" },
       ],
-      status: "ready",
+      status: "done",
     },
     {
       id: "PBI-006",
@@ -170,46 +170,7 @@ const scrum: ScrumDashboard = {
     },
   ],
 
-  sprint: {
-    number: 6,
-    pbi_id: "PBI-005",
-    goal: "ファイル名重複時の連番付与機能の実装",
-    status: "in_progress",
-    subtasks: [
-      {
-        test: "重複ファイル名検出のテストを作成",
-        implementation: "既存ファイル名の存在確認ロジックを実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "8dc6043", message: "test(duplicate): add basic duplicate filename detection", phase: "green" }],
-        notes: ["AC1: 重複時にfilename-1.mdが生成される"],
-      },
-      {
-        test: "初回重複時の連番付与テストを作成(-1が付与される)",
-        implementation: "初回重複時にfilename-1.mdを生成するロジックを実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "696e2d1", message: "feat(duplicate): implement -1 suffix for duplicate filenames", phase: "green" }],
-        notes: ["AC1: 重複時にfilename-1.mdが生成される", "verification: npm test -- --run -t 'duplicate.*-1'"],
-      },
-      {
-        test: "複数回重複時の連番増加テストを作成(-2, -3...)",
-        implementation: "複数回重複時に連番を増やすロジックを実装",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "3a42cd4", message: "feat(duplicate): implement sequential number increment", phase: "green" }],
-        notes: ["AC2: 複数重複時にfilename-2, -3...と連番が増える", "verification: npm test -- --run -t 'duplicate.*sequential'"],
-      },
-      {
-        test: "ファイル名生成の統合テストを作成",
-        implementation: "既存のgenerateFilename関数と連番ロジックを統合",
-        type: "behavioral",
-        status: "completed",
-        commits: [{ hash: "pending", message: "test(duplicate): add integration tests with generateFilename", phase: "green" }],
-        notes: ["既存のgenerateFilename関数との統合確認", "既存関数を組み合わせて動作確認"],
-      },
-    ],
-  },
+  sprint: null,
 
   definition_of_done: {
     checks: [
@@ -227,6 +188,46 @@ const scrum: ScrumDashboard = {
     { number: 3, pbi_id: "PBI-I18N", goal: "i18n実装", status: "done", subtasks: [] },
     { number: 4, pbi_id: "PBI-003", goal: "設定の保存・読み込み機能実装", status: "done", subtasks: [] },
     { number: 5, pbi_id: "PBI-004", goal: "日付フォーマットによるファイル名自動生成", status: "done", subtasks: [] },
+    {
+      number: 6,
+      pbi_id: "PBI-005",
+      goal: "ファイル名重複時の連番付与機能の実装",
+      status: "done",
+      subtasks: [
+        {
+          test: "重複ファイル名検出のテストを作成",
+          implementation: "既存ファイル名の存在確認ロジックを実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "8dc6043", message: "test(duplicate): add basic duplicate filename detection", phase: "green" }],
+          notes: ["AC1: 重複時にfilename-1.mdが生成される"],
+        },
+        {
+          test: "初回重複時の連番付与テストを作成(-1が付与される)",
+          implementation: "初回重複時にfilename-1.mdを生成するロジックを実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "696e2d1", message: "feat(duplicate): implement -1 suffix for duplicate filenames", phase: "green" }],
+          notes: ["AC1: 重複時にfilename-1.mdが生成される", "verification: npm test -- --run -t 'duplicate.*-1'"],
+        },
+        {
+          test: "複数回重複時の連番増加テストを作成(-2, -3...)",
+          implementation: "複数回重複時に連番を増やすロジックを実装",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "3a42cd4", message: "feat(duplicate): implement sequential number increment", phase: "green" }],
+          notes: ["AC2: 複数重複時にfilename-2, -3...と連番が増える", "verification: npm test -- --run -t 'duplicate.*sequential'"],
+        },
+        {
+          test: "ファイル名生成の統合テストを作成",
+          implementation: "既存のgenerateFilename関数と連番ロジックを統合",
+          type: "behavioral",
+          status: "completed",
+          commits: [{ hash: "18f9059", message: "test(duplicate): add integration tests with generateFilename", phase: "green" }],
+          notes: ["既存のgenerateFilename関数との統合確認", "既存関数を組み合わせて動作確認"],
+        },
+      ],
+    },
   ],
 
   retrospectives: [
