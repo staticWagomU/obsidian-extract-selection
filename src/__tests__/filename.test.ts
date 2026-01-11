@@ -94,12 +94,9 @@ describe("filename", () => {
 				expected: "14時30分45秒",
 				description: "Japanese time format",
 			},
-		])(
-			"should generate filename with $description format",
-			({ format, expected }) => {
-				const result = generateFilename(testDate, format);
-				expect(result).toBe(expected);
-			},
-		);
+		])("should generate filename with $description format", ({ format, expected }) => {
+			const result = generateFilename(testDate, format);
+			expect(result).toBe(expected);
+		});
 	});
 });
