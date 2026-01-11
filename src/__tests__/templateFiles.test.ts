@@ -104,4 +104,45 @@ describe("getTemplateFiles", () => {
 			expect(result).toContain("Templates/SubFolder/sub2.md");
 		});
 	});
+
+	describe("空のフォルダまたは存在しないフォルダの場合、空配列を返す (AC3)", () => {
+		test("empty: 空のフォルダは空配列を返す", () => {
+			// Create empty folder
+			const folder: any = Object.create(TFolder.prototype);
+			folder.path = "Templates";
+			folder.children = [];
+
+			// Create vault mock
+			const vault: any = Object.create(Vault.prototype);
+			vault.getAbstractFileByPath = vi.fn().mockReturnValue(folder);
+
+			const result = getTemplateFiles(vault, "Templates");
+
+			expect(result).toEqual([]);
+		});
+
+		test("nonexistent: 存在しないフォルダは空配列を返す", () => {
+			// Create vault mock that returns null for non-existent folder
+			const vault: any = Object.create(Vault.prototype);
+			vault.getAbstractFileByPath = vi.fn().mockReturnValue(null);
+
+			const result = getTemplateFiles(vault, "NonExistent");
+
+			expect(result).toEqual([]);
+		});
+
+		test("notFolder: TFolder以外のオブジェクトは空配列を返す", () => {
+			// Create a TFile instead of TFolder
+			const file: any = Object.create(TFile.prototype);
+			file.path = "Templates.md";
+
+			// Create vault mock
+			const vault: any = Object.create(Vault.prototype);
+			vault.getAbstractFileByPath = vi.fn().mockReturnValue(file);
+
+			const result = getTemplateFiles(vault, "Templates.md");
+
+			expect(result).toEqual([]);
+		});
+	});
 });
