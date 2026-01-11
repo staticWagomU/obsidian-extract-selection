@@ -149,7 +149,7 @@ const scrum: ScrumDashboard = {
     number: 9,
     pbi_id: "PBI-007",
     goal: "テンプレートフォルダ内のファイル一覧取得機能の実装",
-    status: "planning",
+    status: "in_progress",
     subtasks: [
       {
         test: "指定フォルダ内の.mdファイル一覧が取得できることをテストする",
