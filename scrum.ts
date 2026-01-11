@@ -152,7 +152,7 @@ const scrum: ScrumDashboard = {
           verification: "test -f vitest.config.ts && echo 'exists'",
         },
       ],
-      status: "draft",
+      status: "ready",
     },
     {
       id: "PBI-002",
